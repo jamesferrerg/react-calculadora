@@ -2,48 +2,46 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [state, setState] = useState(0);
+  const [displayNumber, setDisplayNumber] = useState(0);
 
-  const [valor, setValor] = useState(0);
+  const [valueToSave, setValueToSave] = useState(0);
 
-  const [valor3, setValor3] = useState(0);
+  const [valueToOperate, setValueToOperate] = useState(0);
 
-  const [simbolo, setSimbolo] = useState();
+  const [symbol, setSymbol] = useState();
 
-  const display = (numero) => {
-    if (valor !== null) {
-      const total = Number(`${valor}${numero}`);
-      setValor(total);
-      setState(total);
-    }
+  const display = (value) => {
+    const total = Number(`${valueToSave}${value}`);
+    setValueToSave(total);
+    setDisplayNumber(total);
   };
 
-  const operacion = (operador) => {
-    setValor3(valor);
-    setValor(0);
-    setSimbolo(operador);
+  const operation = (operator) => {
+    displayNumber === valueToSave ? setValueToOperate(valueToSave) : setValueToOperate(displayNumber);
+    setValueToSave(0);
+    setSymbol(operator);
   };
 
-  const resultado = () => {
-    switch (simbolo) {
-      case "suma":
-        setState(valor3 + state);
+  const result = () => {
+    switch (symbol) {
+      case "addition":
+        setDisplayNumber(valueToOperate + displayNumber);
         break;
-      case "resta":
-        setState(valor3 - state);
+      case "substraction":
+        setDisplayNumber(valueToOperate - displayNumber);
         break;
-      case "multiplicacion":
-        setState(valor3 * state);
+      case "multiplication":
+        setDisplayNumber(valueToOperate * displayNumber);
         break;
       default:
-        setState(valor3 / state);
+        setDisplayNumber(valueToOperate / displayNumber);
         break;
     }
   };
 
   const reset = () => {
-    setState(0);
-    setValor(0);
+    setDisplayNumber(0);
+    setValueToSave(0);
   };
 
   return (
@@ -51,27 +49,30 @@ function App() {
       <div className="container">
         <p>Calculadora - React</p>
         <div className="calculator">
-          <div className="calculator__display">{state}</div>
+          <div className="calculator__display">{displayNumber}</div>
 
           <div className="calculator__keys">
-            <button className="key--operator" onClick={() => operacion("suma")}>
+            <button
+              className="key--operator"
+              onClick={() => operation("addition")}
+            >
               +
             </button>
             <button
               className="key--operator"
-              onClick={() => operacion("resta")}
+              onClick={() => operation("substraction")}
             >
               -
             </button>
             <button
               className="key--operator"
-              onClick={() => operacion("multiplicacion")}
+              onClick={() => operation("multiplication")}
             >
               &times;
             </button>
             <button
               className="key--operator"
-              onClick={() => operacion("division")}
+              onClick={() => operation("division")}
             >
               ÷
             </button>
@@ -89,7 +90,7 @@ function App() {
             <button data-action="clear" onClick={reset}>
               AC
             </button>
-            <button className="key--equal" onClick={resultado}>
+            <button className="key--equal" onClick={result}>
               =
             </button>
           </div>

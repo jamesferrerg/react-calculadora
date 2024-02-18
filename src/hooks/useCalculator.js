@@ -23,7 +23,7 @@ export const useCalculator = () => {
     setSymbol(operator);
   };
 
-  const result = () => {
+  const answer = () => {
     switch (symbol) {
       case "addition":
         setDisplayNumber(valueToOperate + displayNumber);
@@ -51,7 +51,7 @@ export const useCalculator = () => {
     //Methods
     display,
     operation,
-    result,
+    answer,
     reset,
   };
 };

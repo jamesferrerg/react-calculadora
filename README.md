@@ -1,9 +1,11 @@
-# React + Vite
+# Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The following project is developed in react, it performs basic mathematical or calculator operations. Requirements:
+- nodejs 18.14.0 or higher
 
-Currently, two official plugins are available:
+Procedure for operation:
+- yarn install
+- yarn dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# react-calculadora
+Unit test:
+- yarn test
